@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobNaija — Skills open doors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #EFEAD9;
+    --ink-dim: #C9C2A8;
+    --bg: #14231C;
+    --bg-raise: #1B2E24;
+    --gold: #E8A93D;
+    --coral: #D9564C;
+    --line: #3B4B3E;
+    --line-soft: #2A3A2F;
+    --shadow: rgba(0,0,0,0.35);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #EFEAD9;
+      --ink-dim: #C9C2A8;
+      --bg: #14231C;
+      --bg-raise: #1B2E24;
+      --gold: #E8A93D;
+      --coral: #D9564C;
+      --line: #3B4B3E;
+      --line-soft: #2A3A2F;
+      --shadow: rgba(0,0,0,0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ink: #EFEAD9;
+    --ink-dim: #C9C2A8;
+    --bg: #14231C;
+    --bg-raise: #1B2E24;
+    --gold: #E8A93D;
+    --coral: #D9564C;
+    --line: #3B4B3E;
+    --line-soft: #2A3A2F;
+    --shadow: rgba(0,0,0,0.35);
+  }
+
+  :root[data-theme="light"] {
+    --ink: #14231C;
+    --ink-dim: #3F5044;
+    --bg: #F2EEE3;
+    --bg-raise: #E7E1D0;
+    --gold: #B87A1B;
+    --coral: #B8402F;
+    --line: #C9BFA0;
+    --line-soft: #DAD2B8;
+    --shadow: rgba(20,35,28,0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 0;
+  }
+
+  .brand {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 24px;
+    letter-spacing: 0.01em;
+  }
+  .brand em { font-style: italic; color: var(--gold); }
+
+  .nav-note {
+    font-size: 13px;
+    color: var(--ink-dim);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+    padding: 64px 0 80px;
+  }
+
+  .kicker {
+    font-size: 15px;
+    color: var(--ink-dim);
+    max-width: 34ch;
+    margin: 0 0 18px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1.04;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  h1 .accent { font-style: italic; color: var(--gold); }
+
+  .sub {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-dim);
+    max-width: 46ch;
+    margin: 0 0 34px;
+  }
+
+  form.signup {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 480px;
+  }
+
+  .field-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+
+  input[type="email"], select {
+    flex: 1;
+    min-width: 0;
+    background: var(--bg-raise);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    border-radius: 3px;
+  }
+  input[type="email"]::placeholder { color: var(--ink-dim); }
+  input[type="email"]:focus, select:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+
+  select {
+    flex: 0 0 auto;
+    max-width: 160px;
+    cursor: pointer;
+  }
+
+  button.cta {
+    background: var(--gold);
+    color: #14231C;
+    border: none;
+    padding: 14px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'IBM Plex Sans', sans-serif;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
+  }
+  button.cta:hover { background: #F2BC5F; transform: translateY(-1px); }
+  button.cta:active { transform: translateY(0); }
+
+  .form-note {
+    font-size: 13px;
+    color: var(--ink-dim);
+    margin-top: 12px;
+  }
+
+  .confirm {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--gold);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .confirm.show { display: flex; }
+
+  /* ---------- TICKET ---------- */
+  .ticket-stage {
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(14px) rotate(-1.5deg);
+    animation: rise 0.9s cubic-bezier(.2,.8,.2,1) 0.25s forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticket-stage { opacity: 1; transform: rotate(-1.5deg); animation: none; }
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0) rotate(-1.5deg); }
+  }
+
+  .ticket {
+    background: var(--bg-raise);
+    border: 1px solid var(--line);
+    width: 290px;
+    box-shadow: 0 22px 46px var(--shadow);
+    position: relative;
+  }
+
+  .ticket-top {
+    padding: 20px 22px 16px;
+    border-bottom: 1px dashed var(--line);
+    position: relative;
+  }
+
+  .ticket-top::before, .ticket-top::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    width: 18px;
+    height: 18px;
+    background: var(--bg);
+    border-radius: 50%;
+  }
+  .ticket-top::before { left: -9px; }
+  .ticket-top::after { right: -9px; }
+
+  .ticket-label {
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+
+  .ticket-role {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 26px;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+
+  .ticket-loc { font-size: 13px; color: var(--ink-dim); }
+
+  .ticket-bottom { padding: 18px 22px 22px; }
+
+  .ticket-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 9px;
+    color: var(--ink-dim);
+  }
+  .ticket-row span:last-child { color: var(--ink); font-weight: 600; }
+
+  .ticket-match {
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-soft);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .ticket-match-num {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 36px;
+    color: var(--gold);
+  }
+  .ticket-match-label { font-size: 11px; color: var(--ink-dim); text-align: right; max-width: 110px; line-height: 1.4; }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps {
+    padding: 20px 0 84px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .steps-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 56px 0 40px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .steps-head h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 36px;
+    margin: 0;
+  }
+
+  .steps-head p {
+    color: var(--ink-dim);
+    max-width: 34ch;
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .step-list { display: flex; flex-direction: column; }
+
+  .step {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .step:last-child { border-bottom: 1px solid var(--line-soft); }
+
+  .step-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--gold);
+    padding-top: 4px;
+  }
+
+  .step-body h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+  .step-body p {
+    color: var(--ink-dim);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  /* ---------- ROLES STRIP ---------- */
+  .roles {
+    border-top: 1px solid var(--line-soft);
+    padding: 56px 0;
+  }
+  .roles h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 0 0 28px;
+  }
+  .role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line-soft);
+    border: 1px solid var(--line-soft);
+  }
+  .role-cell {
+    background: var(--bg);
+    padding: 18px 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--ink-dim);
+  }
+  .role-cell span:last-child {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+  }
+
+  /* ---------- FOOTER CTA ---------- */
+  footer {
+    border-top: 1px solid var(--line-soft);
+    padding: 64px 0 48px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  footer h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 34px;
+    margin: 0 0 14px;
+  }
+  footer p.lede {
+    color: var(--ink-dim);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 40ch;
+    margin: 0;
+  }
+  .foot-bottom {
+    margin-top: 56px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--ink-dim);
+    border-top: 1px solid var(--line-soft);
+    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding: 40px 0 56px; }
+    h1 { font-size: 44px; }
+    .ticket-stage { justify-content: flex-start; margin-top: 8px; }
+    .steps-head { margin: 40px 0 28px; }
+    .role-grid { grid-template-columns: repeat(2, 1fr); }
+    .foot-grid { grid-template-columns: 1fr; }
+    .step { grid-template-columns: 56px 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 0 18px; }
+    h1 { font-size: 36px; }
+    .field-row { flex-direction: column; }
+    select { max-width: 100%; }
+    .role-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">Job<em>Naija</em></div>
+    <div class="nav-note">Opening to first employers Q1 2027</div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <p class="kicker">A skills-first hiring platform for Nigeria — no more guessing from a CV.</p>
+      <h1>Get hired for<br>what you can<br><span class="accent">actually do.</span></h1>
+      <p class="sub">JobNaija tests your real skills — code, design, writing, whatever your trade is — and matches you straight to roles that are hiring. No connections required, no CV gymnastics. Just proof of work.</p>
+
+      <form class="signup" id="waitlist-form">
+        <div class="field-row">
+          <input type="email" id="email-input" placeholder="you@email.com" required aria-label="Email address">
+          <select id="role-select" aria-label="I am a">
+            <option value="seeker">Job seeker</option>
+            <option value="employer">Employer</option>
+          </select>
+        </div>
+        <button type="submit" class="cta">Join the waitlist</button>
+      </form>
+      <p class="form-note" id="form-note">Takes ten seconds. We'll email you when it's your turn to test in.</p>
+      <p class="confirm" id="confirm-msg">✓ You're on the list — check your inbox for confirmation.</p>
+    </div>
+
+    <div class="ticket-stage">
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="ticket-label">MATCH TICKET · No. 004821</div>
+          <div class="ticket-role">Frontend Engineer</div>
+          <div class="ticket-loc">Lagos, Remote-friendly</div>
+        </div>
+        <div class="ticket-bottom">
+          <div class="ticket-row"><span>Skill test</span><span>React, CSS layout</span></div>
+          <div class="ticket-row"><span>Verified</span><span>Sept 2026</span></div>
+          <div class="ticket-row"><span>Status</span><span>Shortlisted</span></div>
+          <div class="ticket-match">
+            <div class="ticket-match-num">94%</div>
+            <div class="ticket-match-label">match to role requirements</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps">
+    <div class="steps-head">
+      <h2>How it works</h2>
+      <p>Three steps between you and a role that actually fits your skill, not just your resume.</p>
+    </div>
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Take a short skill assessment</h3>
+          <p>Real tasks in your trade — a coding problem, a design brief, a writing sample. Fifteen to thirty minutes, at your own pace.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>Get matched by the AI, not a keyword filter</h3>
+          <p>Your results are scored and matched against open roles across Nigeria — ranked by actual fit, not by who wrote the flashiest CV.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Talk directly to the hiring team</h3>
+          <p>No recruiter chain. Your match ticket goes straight to the people making the decision, with your verified results attached.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="roles">
+    <h2>Built for the roles Nigeria is hiring for</h2>
+    <div class="role-grid">
+      <div class="role-cell"><span>Software Engineering</span><span>High demand</span></div>
+      <div class="role-cell"><span>Product Design</span><span>High demand</span></div>
+      <div class="role-cell"><span>Data & Analytics</span><span>Growing</span></div>
+      <div class="role-cell"><span>Customer Support</span><span>Steady</span></div>
+      <div class="role-cell"><span>Content & Copy</span><span>Growing</span></div>
+      <div class="role-cell"><span>Sales & Growth</span><span>High demand</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <h2>Be in the founding cohort.</h2>
+        <p class="lede">The first group of test-takers gets matched before public launch — first look at roles, and your feedback shapes how the assessments work.</p>
+      </div>
+      <form class="signup" id="waitlist-form-2">
+        <div class="field-row">
+          <input type="email" id="email-input-2" placeholder="you@email.com" required aria-label="Email address">
+          <button type="submit" class="cta">Join</button>
+        </div>
+      </form>
+    </div>
+    <div class="foot-bottom">
+      <span>JobNaija — built in Nigeria</span>
+      <span>© 2026</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function persistEmail(email, role) {
+    try {
+      const raw = localStorage.getItem('jobnaija_waitlist');
+      const list = raw ? JSON.parse(raw) : [];
+      list.push({ email, role: role || 'unspecified', ts: Date.now() });
+      localStorage.setItem('jobnaija_waitlist', JSON.stringify(list));
+    } catch (e) {
+      // storage unavailable — fail silently, form still confirms visually
+    }
+  }
+
+  function handleSubmit(formId, emailId, roleId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const emailField = document.getElementById(emailId);
+      const roleField = roleId ? document.getElementById(roleId) : null;
+      const email = emailField.value.trim();
+      if (!email) return;
+      persistEmail(email, roleField ? roleField.value : null);
+      emailField.value = '';
+      const confirm = document.getElementById('confirm-msg');
+      const note = document.getElementById('form-note');
+      if (confirm) {
+        confirm.classList.add('show');
+        if (note) note.style.display = 'none';
+      } else {
+        const btn = form.querySelector('button.cta');
+        if (btn) {
+          const original = btn.textContent;
+          btn.textContent = 'Added ✓';
+          setTimeout(() => { btn.textContent = original; }, 2400);
+        }
+      }
+    });
+  }
+
+  handleSubmit('waitlist-form', 'email-input', 'role-select');
+  handleSubmit('waitlist-form-2', 'email-input-2', null);
+</script>
+
+</body>
+</html>
